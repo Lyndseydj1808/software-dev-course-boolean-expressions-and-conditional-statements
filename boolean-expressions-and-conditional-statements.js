@@ -28,19 +28,50 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
+const hasCurrency = true;
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
 
 if (choice === "mountains" && hasTorch) {
   console.log("You safely navigate through the dark mountains.");
-} else if (choice === "mountains" && !hasTorch) {
+  console.log("On your journey you come across an abandoned cabin. You are running low on supplies, but need to keep moving to stay ahead of the enemy.");
+  const foodChoice = readline.question("Do you stop to look for food?");
+    if (foodChoice === "yes") {
+    console.log("Congratulations! You found 3 cans of beans and some bandages that will help you on your journey.");
+    } 
+    else {
+    console.log("You continue on your journey.");
+    }
+} 
+else if (choice === "mountains" && !hasTorch) {
   console.log("It's too dark to proceed. You decide to turn back.");
-} else if (choice === "village" || hasMap) {
+} 
+else if (choice === "village" || hasMap) {
   console.log("You find your way to the village.");
+  console.log("You meet a skilled blacksmith who is selling weapons.");
+  const weoponChoice = readline.question("Do you purchase a sword or knife?");
+    if (weoponChoice === "sword" && hasCurrency) {
+      console.log("Congratulations. Here is your new sword!");
+    } 
+    else if (weoponChoice === "sword" && !hasCurrency) {
+      console.log("Sorry, you do not have enough money to purchase this item.");
+    } 
+    else if (weoponChoice === "knife" && hasCurrency) {
+      console.log("Congratulations! Here is your new knife.");
+    } 
+    else if (weoponChoice === "knife" && !hasCurrency) {
+      console.log("Sorry, you do not have enough money to purchase this item.");
+    } 
+    else {
+      console.log("Please choose sword or knife.");
+    }
 } else {
   console.log("You get lost and wander aimlessly.");
 }
+
+
+
 
 /* 
 
